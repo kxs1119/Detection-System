@@ -1,0 +1,40 @@
+@startuml
+
+cloud "Cloud Service" {
+    class CloudStorage {
+        +storeDeerData()
+        +retrieveGeofenceData()
+    }
+}
+
+class Sensor {
+    +detectDeer()
+}
+
+class GeofencingSystem {
+    +defineGeofence()
+    +triggerNotification()
+}
+
+class NotificationSystem {
+    +sendAlert()
+}
+
+class User {
+    +receiveAlert()
+}
+
+class Admin {
+    +monitorSensorData()
+    +adjustGeofence()
+}
+
+Sensor --> GeofencingSystem : sends data
+GeofencingSystem --> NotificationSystem : triggers alert
+NotificationSystem --> User : sends notification
+Admin --> GeofencingSystem : manages
+Admin --> Sensor : monitors
+GeofencingSystem --> CloudStorage : stores data
+NotificationSystem --> CloudStorage : retrieves geofence data
+
+@enduml

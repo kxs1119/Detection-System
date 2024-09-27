@@ -1,0 +1,28 @@
+@startuml
+
+actor Sensor
+actor Admin
+actor "Notification System" as Notification
+actor User
+actor "Geofencing System" as Geofencing
+
+rectangle "Geofencing Project" {
+    usecase "Detect Deer" as UC1
+    usecase "Define Geofence" as UC2
+    usecase "Monitor Sensor Data" as UC3
+    usecase "Trigger Notification" as UC4
+    usecase "Send Alert" as UC5
+    usecase "Receive Alert" as UC6
+    usecase "Adjust Geofence" as UC7
+}
+
+Sensor --> UC1 : detects
+Admin --> UC2 : defines
+Admin --> UC3 : monitors
+Geofencing --> UC1 : receives data
+Geofencing --> UC4 : triggers
+Notification --> UC5 : sends
+User --> UC6 : receives
+Admin --> UC7 : adjusts
+
+@enduml

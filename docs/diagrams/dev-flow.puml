@@ -1,0 +1,69 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+    BackgroundColor #E0E0E0
+    BorderColor #000000
+}
+
+RECTANGLE Requirements {
+    :Gather requirements;
+    :Identify stakeholders;
+    :Define system requirements;
+    :Conduct interviews or surveys;
+    :Create a requirements document;
+}
+
+RECTANGLE Design {
+    :Architectural design;
+    :Create high-level architecture diagram;
+    :System and interface design;
+    :Define database schema;
+    :Develop data flow diagrams;
+    :Review design with stakeholders;
+}
+
+RECTANGLE Implementation {
+    :Set up development environment;
+    :Install necessary libraries and tools;
+    :Develop code (Python/C++);
+    :Integrate sensors and modules;
+    :Implement communication protocols;
+    :Conduct code reviews;
+}
+
+RECTANGLE Testing {
+    :Unit testing;
+    :Write test cases for each module;
+    :Integration testing;
+    :Ensure components work together;
+    :System testing;
+    :Test the complete application;
+    :User acceptance testing;
+    :Gather feedback from users;
+}
+
+RECTANGLE Deployment {
+    :Prepare deployment environment;
+    :Create installation scripts;
+    :Deploy to Raspberry Pi;
+    :Conduct final testing in the field;
+    :Document deployment process;
+}
+
+RECTANGLE Maintenance {
+    :Monitor system performance;
+    :Set up logging and alerting;
+    :Fix bugs reported by users;
+    :Implement feature updates;
+    :Conduct regular reviews and improvements;
+
+}
+
+Requirements --> Design
+Design --> Implementation
+Implementation --> Testing
+Testing --> Deployment
+Deployment --> Maintenance
+Maintenance --> Requirements : Feedback Loop
+
+@enduml
