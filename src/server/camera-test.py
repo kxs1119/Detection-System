@@ -23,9 +23,9 @@ try:
             led.on()
             sleep(5)
             led.off()
-            
             print("LED turned off after 5 seconds...")
-            break
-        
 except KeyboardInterrupt:
     print("Print terminated")
+finally:
+    led.off()
+    print("Cleaned up resources and exited.")
