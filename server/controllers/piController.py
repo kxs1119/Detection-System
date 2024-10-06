@@ -9,9 +9,9 @@ auth_token = ''
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-  from_='+18554496128',
+  from_='',
   body='Hello from Twilio',
-  to='+16673673947'
+  to=''
 )
 
 print(message.sid)
