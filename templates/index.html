@@ -6,11 +6,58 @@
     <title>Deer Detection</title>
 </head>
 <body>
+
+    
+    
+    <!-- "deer_detected": True,
+        "location": {
+            "latitude": 38.8951,
+            "longitude": -77.0364
+        },
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S") -->
+
     <header><h1>Animal Detection</h1>
     </header>
+    <h1>Dashboard</h1>
+    <h1>IOT</h1>
     <button>Solved</button>
+
+
     <h2>Details</h2>
+    
+    <p>{{ device }}</p>  
+    <textarea></textarea>
+      
+    <h2>Time Stamp</h2>
+    
+    <p><div>{{ time_stamp }}</div></p>
+    <textarea></textarea>
+
+    <h2>Location</h2>
+    <p>{{ latitude }} {{ longitude }}  </p>
+    <textarea></textarea>
+
+    <h2>Map</h2>
+
+    <p>{{ map }}</p>
+    <textarea></textarea>
+
+    <h2>Location</h2>
+    <textarea></textarea>
+
+    <p>{{ location }}</p>
+
+    <h2>Dectection</h2>
+    <p>{{ detection_time  }}</p>
+    <p>{{ detection_id  }}</p>
+
+    <h2>Alerts</h2>
+    <p>{{ alert_count }}</p>
+    
+    <h2>Animal type</h2>
+    <p>{{ animal_type  }}</p>
     <footer>
+    
         <p>This is the Footer</p>
     </footer>
 </body>
