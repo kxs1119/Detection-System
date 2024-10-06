@@ -18,7 +18,7 @@ def send_data():
 
     # Send the data to the backend API endpoint
     try:
-        response = requests.post('http://your-backend-api.com/api/deer-detection', json=data)
+        response = requests.post('http://127.0.0.1:5000/api/deer-detection', json=data)
         response.raise_for_status()  # Raises an HTTPError for bad responses
         print("Data sent successfully!")
     except requests.exceptions.HTTPError as err:
