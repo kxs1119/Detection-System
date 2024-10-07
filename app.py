@@ -1,30 +1,46 @@
-from flask import Flask,render_template
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from server.routes.api import api_bp # Import API bluepring
 
 app = Flask(__name__)
 CORS(app)
 
+# Initialize detection data as None to be populated later
+detection_data = None
+
 @app.route('/')
 def home():
-    # Dynamic content initated
-    context = {
-        'device': 'Raspberry Pi',
-        'time_stamp': '13:00 PM',
-        'latitude': 31.043,
-        'longitude': -34.541,
-        'map': "map here",
-        'location': 'Slippery Rock University',
-        'detection_time': '12:59 PM',
-        'detection_id': 1234,
-        'alert_count': 1,
-        'animal_type': 'deer'
-    }
+    global detection_data
     
-    return render_template('index.html', **context)
+    # If no data is available, return a message
+    if detection_data is None:
+        return render_template('index.html', message="No detection data available yet.")
+    
+    # Pass the detection data dynamically to the template when available
+    return render_template('index.html', **detection_data)
 
-# Register the API blueprint with the URL prefix '/api'
-app.register_blueprint(api_bp, url_prefix='/api')
+# API endpoint to receive POST data from send_data.py
+@app.route('/api/deer-detection', methods=['POST'])
+def deer_detection():
+    global detection_data
+    data = request.json  # Get the JSON data sent from send_data.py
+
+    if data:
+        # Dynamically populate detection_data with the received data
+        detection_data = {
+            'device': 'Raspberry Pi',
+            'time_stamp': data.get('time', ''),
+            'latitude': data.get('location', {}).get('latitude', ''),
+            'longitude': data.get('location', {}).get('longitude', ''),
+            'location': 'Dynamic location',  # You can customize this if needed
+            'detection_time': data.get('time', ''),
+            'detection_id': 1234,  # This can be dynamically generated as needed
+            'alert_count': 1,  # Example: you can increment this count as needed
+            'animal_type': data.get('detection_type', 'deer')
+        }
+
+        # Respond with a success message
+        return jsonify({"message": "Detection data received and updated successfully"}), 200
+    return jsonify({"message": "Invalid data"}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8080,debug=True) 
+    app.run(host='0.0.0.0', port=8080, debug=True)
