@@ -2,8 +2,8 @@ from gpiozero import MotionSensor
 import os
 import time
 
-# Set up the motion sensor on GPIO pin 4
-pir = MotionSensor(4)
+# Set up the motion sensor on GPIO pin 18
+pir = MotionSensor(18)
 
 def detect_deer():
     """
@@ -12,12 +12,11 @@ def detect_deer():
     """
     try:
         print("Monitoring for deer...")
-        while True:
-            pir.wait_for_motion()
-            print("Deer detected!")
-            # Trigger the send_data.py script to send the detection data to the backend
-            os.system('python3 send_data.py')
-            time.sleep(5)  # Prevent multiple rapid triggers
+        pir.wait_for_motion()
+        print("Deer detected!")
+        # Trigger the send_data.py script to send the detection data to the backend
+        os.system('python ./src/send_data.py')
+        time.sleep(5)  # Prevent multiple rapid triggers
     except KeyboardInterrupt:
         print("Monitoring stopped.")
 
