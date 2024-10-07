@@ -31,10 +31,10 @@ def deer_detection():
             'time_stamp': data.get('time', ''),
             'latitude': data.get('location', {}).get('latitude', ''),
             'longitude': data.get('location', {}).get('longitude', ''),
-            'location': 'Dynamic location',  # You can customize this if needed
+            'location': 'Dynamic location',  
             'detection_time': data.get('time', ''),
-            'detection_id': 1234,  # This can be dynamically generated as needed
-            'alert_count': 1,  # Example: you can increment this count as needed
+            'detection_id': 1234,  
+            'alert_count': 1,  
             'animal_type': data.get('detection_type', 'deer')
         }
 
