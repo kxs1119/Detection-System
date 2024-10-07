@@ -1,21 +1,22 @@
 import requests
 import json
-from datetime import datetime
+import sys
 
-def send_data():
+def send_data(detection_data):
     """
     Sends deer detection data to the backend server using a POST request.
     """
-    # Data payload (replace latitude and longitude with actual data)
-    url = 'http://192.168.250.144:8080/api/deer-detection'
+    # Data payload with the passed detection data
+    url = 'http://192.168.250.144:8080/api/deer-detection'  # Update the URL if needed
     data = {
-        "deer_detected": True,
-        "location": {
-            "latitude": 38.8951,
-            "longitude": -77.0364
+        'time': detection_data['time'],
+        'location': {
+            'latitude': detection_data['location']['latitude'],
+            'longitude': detection_data['location']['longitude']
         },
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        'detection_type': detection_data['type']  # Type could be 'deer', etc.
     }
+    
     # Send the data to the backend API endpoint
     try:
         response = requests.post(url, json=data)
@@ -27,4 +28,11 @@ def send_data():
         print(f"An error occurred: {err}")
 
 if __name__ == "__main__":
-    send_data()
+    # Check if detection data was passed as a command-line argument
+    if len(sys.argv) > 1:
+        # Parse the JSON string passed from sensor_check.py
+        detection_data = json.loads(sys.argv[1])
+        print(f"Received detection data: {detection_data}")
+        send_data(detection_data)
+    else:
+        print("No detection data received.")

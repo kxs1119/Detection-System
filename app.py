@@ -7,7 +7,21 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    # Dynamic content initated
+    context = {
+        'device': 'Raspberry Pi',
+        'time_stamp': '13:00 PM',
+        'latitude': 31.043,
+        'longitude': -34.541,
+        'map': "map here",
+        'location': 'Slippery Rock University',
+        'detection_time': '12:59 PM',
+        'detection_id': 1234,
+        'alert_count': 1,
+        'animal_type': 'deer'
+    }
+    
+    return render_template('index.html', **context)
 
 # Register the API blueprint with the URL prefix '/api'
 app.register_blueprint(api_bp, url_prefix='/api')
