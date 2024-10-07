@@ -21,9 +21,9 @@ def detect_deer():
             detection_data = {
                 "location": 
                     {
-                        "longitude": 31
+                        "longitude": 31,
                         "latitude" : 35
-                    }
+                    },
                 "time": time.strftime("%Y-%m-%d %H:%M:%S"),
                 "type": "deer"  # You can expand this if you detect other animals
             }
