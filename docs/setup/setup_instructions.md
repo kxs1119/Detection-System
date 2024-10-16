@@ -27,33 +27,16 @@ Once the environment is activated, install Flask:
 pip install Flask
 ```
 
-## 3. Create a Basic Flask Application
-
-In the project directory, create a file called `app.py` with the following content:
-
-```python
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "Hello, Flask!"
-
-if __name__ == '__main__':
-    app.run(debug=True)
-```
-
-## 4. Run the Flask Application
+## 3. Run the Flask Application
 
 In the terminal, ensure you’re still in the virtual environment, then start the Flask app with:
 ```bash
 python app.py
 ```
 
-- Open a browser and go to `http://127.0.0.1:5000` to see the Flask app running.
+- Open a browser and go to `http://127.0.0.1:5000` or `http://localhost:500` to see the Flask app running.
 
-## 5. Deactivate the Virtual Environment
+## 4. Deactivate the Virtual Environment
 
 When you're done, deactivate the environment by running:
 ```bash

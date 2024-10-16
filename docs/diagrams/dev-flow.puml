@@ -7,28 +7,25 @@ skinparam rectangle {
 
 RECTANGLE Requirements {
     :Gather requirements;
-    :Identify stakeholders;
     :Define system requirements;
-    :Conduct interviews or surveys;
     :Create a requirements document;
 }
 
 RECTANGLE Design {
-    :Architectural design;
+    :Figma design;
     :Create high-level architecture diagram;
-    :System and interface design;
     :Define database schema;
     :Develop data flow diagrams;
-    :Review design with stakeholders;
+    :Review design with Professor;
 }
 
 RECTANGLE Implementation {
     :Set up development environment;
-    :Install necessary libraries and tools;
-    :Develop code (Python/C++);
-    :Integrate sensors and modules;
-    :Implement communication protocols;
-    :Conduct code reviews;
+    :Install necessary libraries and tools into virtual machine;
+    :Develop code (Python,Flutter);
+    :Integrate sensors and modules onto Raspberry Pi;
+    :Implement communication protocols through Flask;
+    :Conduct code reviews with Professor;
 }
 
 RECTANGLE Testing {
@@ -61,9 +58,9 @@ RECTANGLE Maintenance {
 
 Requirements --> Design
 Design --> Implementation
-Implementation --> Testing
-Testing --> Deployment
-Deployment --> Maintenance
-Maintenance --> Requirements : Feedback Loop
+Implementation --> Testing 
+Testing --> Deployment 
+Deployment --> Maintenance 
+Maintenance --> Requirements
 
 @enduml
