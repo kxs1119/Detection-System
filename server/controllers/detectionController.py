@@ -1,26 +1,33 @@
+from flask import Blueprint, request, jsonify
 
-def process_deer_detection(data):
-    """
-    Function to process deer detection data sent from the Raspberry Pi.
-    - data: dict containing the detection info.
-    """
+detection_bp = Blueprint('detection', __name__)
+latest_sensor_data = None  # Global to hold latest sensor data
+
+@detection_bp.route('/sensor', methods=['POST'])
+def receive_sensor_data():
+    global latest_sensor_data
     try:
-        # Extract necessary fields from the incoming data
-        deer_detected = data.get('deer_detected', False)
-        location = data.get('location', {})
+        sensor_data = request.get_json()
+        # Process the data directly here
+        deer_detected = sensor_data.get('type', '') == 'motion'
+        location = sensor_data.get('location', {})
         latitude = location.get('latitude', None)
         longitude = location.get('longitude', None)
-        timestamp = data.get('timestamp', None)
+        timestamp = sensor_data.get('time', None)
 
-        # Check if the necessary data is present
         if deer_detected and latitude and longitude:
-            # Log or store the detection data (placeholder)
+            latest_sensor_data = sensor_data  # Store latest data for real-time access
             print(f"Deer detected at lat {latitude}, long {longitude} at {timestamp}")
-            # Additional processing like storing in a database can go here
-            return {"status": "success", "message": "Deer detection processed successfully"}
+            return jsonify({"status": "success", "message": "Real-time data processed"}), 200
         else:
-            return {"status": "error", "message": "Missing or invalid data"}
+            return jsonify({"status": "error", "message": "Missing or invalid data"}), 400
 
     except Exception as e:
-        print(f"Error processing detection: {e}")
-        return {"status": "error", "message": str(e)}
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@detection_bp.route('/sensor', methods=['GET'])
+def get_sensor_data():
+    global latest_sensor_data
+    if latest_sensor_data:
+        return jsonify(latest_sensor_data), 200
+    return jsonify({"status": "error", "message": "No sensor data available"}), 404
