@@ -1,30 +1,32 @@
 @startuml
 start
 :Define System Requirements;
-:Research Geofencing Technologies;
+:Research Geofencing and Animal Detection Technologies;
 
-if (Embedded or Cloud?) then (Embedded)
-    :Choose Embedded Platform (Raspberry Pi, Arduino, etc.);
-    :Select Sensors for Animal Detection;
-    :Develop Local Geofencing Logic;
-    :Test Real-time Processing on Embedded Device;
-else (Cloud)
-    :Choose Cloud Geofencing Service (AWS IoT, PostGIS, etc.);
-    :Define Cloud Processing Workflow;
-    :Integrate with Cloud Services;
-endif
+:Choose Embedded Platform (Raspberry Pi);
+:Select Ultrasonic Sensor for Animal Detection;
+
+:Develop Local Geofencing Logic on Raspberry Pi;
+:Integrate PostgreSQL Database for Storing Detection and Geofence Data;
+
+:Configure Apache for Local Web Server;
+:Develop Flask Backend for Data Processing;
+:Develop Mobile Application with Flutter for User Alerts;
 
 :Choose Communication Method;
-if (Send Alert to Phone or GPS?) then (Phone)
-    :Integrate SMS API (Twilio, AWS SNS, etc.);
-else (GPS)
-    :Integrate with Vehicle GPS System;
+if (Send Alert via Notification or SMS?) then (Notification)
+    :Integrate Firebase Cloud Messaging (FCM) for Mobile Alerts;
+else (SMS)
+    :Explore Alternative Notification APIs;
 endif
 
-:Develop Cloud Monitoring and Storage;
-:Test Local System with Alerts;
-:Deploy System to Highway;
-:Monitor and Optimize Performance;
+:Test Real-time Processing and Sensor Detection on Embedded Device;
+:Test Data Flow to PostgreSQL Database and Mobile Application;
+:Test Mobile Application for Receiving Alerts;
+
+:Deploy System to Highway Area for Pilot Testing;
+:Monitor Sensor Data and System Performance;
+:Optimize Detection Accuracy and Communication Reliability;
 
 stop
 @enduml

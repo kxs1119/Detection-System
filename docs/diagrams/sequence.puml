@@ -1,15 +1,15 @@
 @startuml
 
+actor Sensor
+participant DetectionSystem
+participant Database
 actor User
 actor Admin
-actor Sensor
-participant GeofencingSystem
-participant NotificationSystem
 
-User -> GeofencingSystem : defineGeofence()
-Admin -> Sensor : monitorSensorData()
-Sensor -> GeofencingSystem : detectDeer()
-GeofencingSystem -> NotificationSystem : triggerNotification()
-NotificationSystem -> User : sendAlert()
+Sensor -> DetectionSystem : detectDeer()
+DetectionSystem -> Database : queryHighwayData()
+Database --> DetectionSystem : returnHighwayData
+DetectionSystem -> User : sendAlert (if near highway)
+Admin -> Database : updateHighwayData()
 
 @enduml
