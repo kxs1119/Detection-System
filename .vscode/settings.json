@@ -4,11 +4,11 @@
       "previewLimit": 50,
       "server": "100.89.198.120",
       "port": 5432,
+      "askForPassword": true,
       "driver": "PostgreSQL",
       "name": "pi",
-      "database": "sensor_data_db",
-      "username": "postgres",
-      "password": ""
+      "database": "sensor_data",
+      "username": "kenny"
     }
   ],
   "java.compile.nullAnalysis.mode": "automatic",
