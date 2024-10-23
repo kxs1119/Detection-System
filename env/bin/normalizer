@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/kennysmith/Library/CloudStorage/OneDrive-SlipperyRockUniversityofPA/CPSC 423/project/Detection-System/env/bin/python" "$0" "$@"
+'''exec' "/Users/kennysmith/Library/CloudStorage/OneDrive-SlipperyRockUniversityofPA/CPSC 423/project/Detection-System/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
