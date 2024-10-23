@@ -1,0 +1,16 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "100.89.198.120",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "pi",
+      "database": "sensor_data",
+      "username": "kenny"
+    }
+  ],
+  "java.compile.nullAnalysis.mode": "automatic",
+  "cmake.sourceDirectory": "/Users/kennysmith/Library/CloudStorage/OneDrive-SlipperyRockUniversityofPA/CPSC 423/project/Detection-System/flutter_app/linux"
+}
