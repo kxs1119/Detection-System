@@ -126,13 +126,17 @@ if $cygwin ; then
     # Now convert the arguments - kludge to limit ourselves to /bin/sh
     i=0
     for arg in "$@" ; do
-        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
-        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
+        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN"`
+        CHECK2=`echo "$arg"|egrep -c "^-"`  # Determine if the argument is an option
 
-        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
+        # Check if argument matches the pattern and is not an option
+        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then
             eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
-        else
+        elif [ $CHECK2 -eq 1 ]; then  # Handle options separately
             eval `echo args$i`="\"$arg\""
+        else
+            # If it doesn't match the pattern, convert it to an alternate path
+            eval `echo args$i`="/alternative/path/$arg"  # Added else condition
         fi
         i=$((i+1))
     done
