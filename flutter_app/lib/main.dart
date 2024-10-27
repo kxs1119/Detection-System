@@ -9,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
+<<<<<<< HEAD
   const HomeScreen({super.key});
+=======
+  const HomeScreen({Key? key}) : super(key: key);
+>>>>>>> eb6a8150 (Adding Home screen in flutter)
 
   Widget _buildHeader() {
     return Padding(
@@ -105,7 +109,11 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
+<<<<<<< HEAD
             SizedBox(
+=======
+            Container(
+>>>>>>> eb6a8150 (Adding Home screen in flutter)
               height: 200, // Adjust height as needed
               child: FlutterMap(
                 options: MapOptions(
