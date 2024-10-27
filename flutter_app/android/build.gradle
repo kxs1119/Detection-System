@@ -1,3 +1,15 @@
+// Add repositories and dependencies at the top
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.1'
+    }
+}
+
+// Apply repositories to all projects
 allprojects {
     repositories {
         google()
@@ -5,14 +17,59 @@ allprojects {
     }
 }
 
+// Specify root project build directory
 rootProject.buildDir = "../build"
+
+// Set the build directory for each subproject
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
+// Ensure the ':app' module is evaluated before other subprojects
+subprojects {
+    project.evaluationDependsOn(":app")
+}// Add repositories and dependencies for the build script
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.1'  // Use the correct version of the Android Gradle Plugin
+    }
+}
+
+// Apply repositories to all projects (including subprojects)
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Set the build directory for the root project
+rootProject.buildDir = "../build"
+
+// Set build directories for each subproject
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+// Ensure the ':app' module is evaluated before other subprojects
 subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// Define the clean task (only once)
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}// Add repositories and dependencies for the build script
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.1'  // Use the correct version of the Android Gradle Plugin
+    }
 }
