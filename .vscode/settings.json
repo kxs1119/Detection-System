@@ -12,5 +12,6 @@
     }
   ],
   "java.compile.nullAnalysis.mode": "automatic",
-  "cmake.sourceDirectory": "/Users/kennysmith/Library/CloudStorage/OneDrive-SlipperyRockUniversityofPA/CPSC 423/project/Detection-System/flutter_app/linux"
+  "cmake.sourceDirectory": "/Users/kennysmith/Library/CloudStorage/OneDrive-SlipperyRockUniversityofPA/CPSC 423/project/Detection-System/flutter_app/linux",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
