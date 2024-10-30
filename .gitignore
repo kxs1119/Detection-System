@@ -9,3 +9,6 @@ src/firebase-adminsdk.json
 
 # Ignore Python cache directories
 __pycache__/
+
+*.pyc
+__pycache__/

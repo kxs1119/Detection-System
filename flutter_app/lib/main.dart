@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'screens/MapScreen.dart';
 import 'models/AlertLocation.dart';
@@ -180,3 +181,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> 056d04b5 (Reapply .gitignore to remove sensitive files from tracking)
