@@ -1,4 +1,14 @@
-# .gitignore content
+# Ignore the environment file in the root directory
 .env
+
+# Ignore Firebase service key in src folder
+src/firebase-adminsdk.json
+
+# Ignore all .log files in the project
+*.log
+
+# Ignore Python cache directories
 __pycache__/
+
 *.pyc
+__pycache__/
