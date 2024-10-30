@@ -1,4 +1,11 @@
 # .gitignore content
+
+# Ignore environment files
 .env
+
+# Ignore Python cache files
 __pycache__/
 *.pyc
+
+# Ignore Firebase service account key
+src/firebase-adminsdk.json  # Adjust the path to match your file location
