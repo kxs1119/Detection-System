@@ -8,4 +8,4 @@ __pycache__/
 *.pyc
 
 # Ignore Firebase service account key
-src/firebase-adminsdk.json  # Adjust the path to match your file location
+src/firebase-adminsdk.json
