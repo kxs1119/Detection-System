@@ -5,6 +5,12 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 import firebase_admin
 from firebase_admin import credentials, messaging
+import os
+from dotenv import load_dotenv
+from mock import mock_alerts
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -22,7 +28,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Initialize Firebase Admin SDK
-cred = credentials.Certificate('FIREBASE_KEY_PATH')  
+FIREBASE_KEY_PATH = os.getenv('FIREBASE_KEY_PATH')
+cred = credentials.Certificate(FIREBASE_KEY_PATH)  
 firebase_admin.initialize_app(cred)
 
 # Model for storing detection data
@@ -76,6 +83,26 @@ def deer_detection():
 
     return jsonify({"message": "Invalid data"}), 400
 
+# Endpoint to fetch recent or all alerts
+@app.route('/alerts', methods=['GET'])
+def get_alerts():
+    # alerts = Detection.query.all()
+    # alert_list = [
+    #     {
+    #         "id": alert.id,
+    #         "device": alert.device,
+    #         "time_stamp": alert.time_stamp,
+    #         "latitude": alert.latitude,
+    #         "longitude": alert.longitude,
+    #         "location": alert.location,
+    #         "detection_time": alert.detection_time,
+    #         "detection_id": alert.detection_id,
+    #         "alert_count": alert.alert_count,
+    #         "animal_type": alert.animal_type,
+    #     }
+    #     for alert in alerts
+    # ]
+    return jsonify(mock_alerts), 200    #TODO: Revise this to alert_list when database is setup
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='localhost', port=8080, debug=True)
