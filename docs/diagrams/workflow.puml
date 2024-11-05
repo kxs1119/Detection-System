@@ -15,7 +15,7 @@ start
 
 :Choose Communication Method;
 if (Send Alert via Notification or SMS?) then (Notification)
-    :Integrate Firebase Cloud Messaging (FCM) for Mobile Alerts;
+    :Integrate Expo Push Notification for Mobile Alerts;
 else (SMS)
     :Explore Alternative Notification APIs;
 endif

@@ -39,7 +39,7 @@ class Admin {
 Sensor --> GeofenceManager : sends data
 Sensor --> CloudStorage : stores detection data
 GeofenceManager --> NotificationSystem : triggers alert
-NotificationSystem --> MobileAppUser : sends notification via FCM
+NotificationSystem --> MobileAppUser : sends notification via Expo Push Notification
 Admin --> GeofenceManager : manages geofence
 Admin --> Sensor : monitors
 GeofenceManager --> CloudStorage : stores geofence data
