@@ -23,7 +23,7 @@ const Push: React.FC = () => {
           Alert.alert('Permission not granted to receive push notifications!');
           return;
         }
-        const projectId = Constants.expoConfig?.extra?.eas?.projectId ?? Constants.easConfig?.projectId;
+        const projectId = Constants.expoConfig?.extra?.projectId;
         if (!projectId) {
           Alert.alert('Project ID not found!');
           return;

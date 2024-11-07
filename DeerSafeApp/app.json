@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "DeerSafeApp",
-    "slug": "DeerSafeApp",
+    "slug": "deer-safe-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,6 +22,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra":{
+      "projectId": "b7c0f423-ecf9-475e-ba39-e40780069107"
+      }
   }
 }
