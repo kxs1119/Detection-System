@@ -24,7 +24,9 @@
       "favicon": "./assets/favicon.png"
     },
     "extra":{
-      "projectId": "b7c0f423-ecf9-475e-ba39-e40780069107"
+      "projectId": "b7c0f423-ecf9-475e-ba39-e40780069107",
+      "SUPABASE_URL": "https://irqbgvpkxzwuelwpkwqp.supabase.co",
+      "SUPABASE_ANON_KEY": "yeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlycWJndnBreHp3dWVsd3Brd3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzA5ODQwNzgsImV4cCI6MjA0NjU2MDA3OH0.fiKMBew-5-LIhqkeptpbc9Ht7PPPPnsZFEiC6Ndvmmo"
       }
   }
 }

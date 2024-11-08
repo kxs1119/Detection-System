@@ -1,1 +1,50 @@
-[{"id": 1, "device": "Raspberry Pi", "time_stamp": "2024-10-31T14:20:00Z", "latitude": "40.7128", "longitude": "-74.0060", "location": "New York City", "detection_time": "2024-10-31T14:20:00Z", "detection_id": 1234, "alert_count": 1, "animal_type": "Deer"}, {"id": 2, "device": "Raspberry Pi", "time_stamp": "2024-10-31T15:45:00Z", "latitude": "34.0522", "longitude": "-118.2437", "location": "Los Angeles", "detection_time": "2024-10-31T15:45:00Z", "detection_id": 5678, "alert_count": 2, "animal_type": "Deer"}, {"id": 3, "device": "Raspberry Pi", "time_stamp": "2024-10-31T15:45:00Z", "latitude": "34.0522", "longitude": "-118.2437", "location": "baltimore", "detection_time": "2024-10-31T15:45:00Z", "detection_id": 5678, "alert_count": 2, "animal_type": "Deer"}, {"id": 4, "device": "Raspberry Pi", "time_stamp": "2024-10-31T15:45:00Z", "latitude": "34.0522", "longitude": "-118.2437", "location": "Wyoming", "detection_time": "2024-10-31T15:45:00Z", "detection_id": 5678, "alert_count": 2, "animal_type": "Deer"}]
+[
+    {
+        "id": 1,
+        "device": "Raspberry Pi",
+        "time_stamp": "2024-10-31T14:20:00Z",
+        "latitude": "40.7128",
+        "longitude": "-74.0060",
+        "location": "New York City",
+        "detection_time": "2024-10-31T14:20:00Z",
+        "detection_id": 1234,
+        "alert_count": 1,
+        "animal_type": "Deer"
+    },
+    {
+        "id": 2,
+        "device": "Raspberry Pi",
+        "time_stamp": "2024-10-31T15:45:00Z",
+        "latitude": "34.0522",
+        "longitude": "-118.2437",
+        "location": "Los Angeles",
+        "detection_time": "2024-10-31T15:45:00Z",
+        "detection_id": 5678,
+        "alert_count": 2,
+        "animal_type": "Deer"
+    },
+    {
+        "id": 3,
+        "device": "Raspberry Pi",
+        "time_stamp": "2024-10-31T15:45:00Z",
+        "latitude": "34.0522",
+        "longitude": "-118.2437",
+        "location": "baltimore",
+        "detection_time": "2024-10-31T15:45:00Z",
+        "detection_id": 5678,
+        "alert_count": 2,
+        "animal_type": "Deer"
+    },
+    {
+        "id": 9,
+        "device": "Raspberry Pi",
+        "time_stamp": "2024-11-01T15:00:00Z",
+        "latitude": "40.7306",
+        "longitude": "-73.9352",
+        "location": "Test",
+        "detection_time": "2024-11-01T15:00:00Z",
+        "detection_id": 7890,
+        "alert_count": 3,
+        "animal_type": "Deer"
+    }
+]
