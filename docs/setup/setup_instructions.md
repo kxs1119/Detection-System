@@ -34,7 +34,7 @@ In the terminal, ensure you’re still in the virtual environment, then start th
 python app.py
 ```
 
-- Open a browser and go to `http://127.0.0.1:5000` or `http://localhost:500` to see the Flask app running.
+- Open a browser and go to `http://127.0.0.1:8080` or `http://localhost:8080` to see the Flask app running.
 
 ## 4. Deactivate the Virtual Environment
 

@@ -1,27 +1,23 @@
 // components/Navbar.tsx
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {styles} from './styles';
+import { navBarStyles } from "./styles/NavBar.styles";
 
-const Navbar: React.FC = () => (
-  <View style={styles.navbar}>
-    <TouchableOpacity style={styles.iconContainer}>
-      <Icon name="person" size={24} color="#CCCCCC" />
-    </TouchableOpacity>
-    <Text style={styles.title}>Home</Text>
-    <View style={styles.rightIcons}>
-      <TouchableOpacity style={styles.iconContainer}>
-        <Icon name="notifications" size={24} color="#CCCCCC" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.iconContainer}>
-        <Icon name="settings" size={24} color="#CCCCCC" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.profileCircle}>
-        <Text style={styles.profileText}>K</Text>
-      </TouchableOpacity>
+const NavBar: React.FC = () => {
+  return (
+    <View style={navBarStyles.container}>
+      <Text style={navBarStyles.title}> Home</Text>
+      <View style={navBarStyles.rightIcons}>
+        {/* Example of an icon */}
+        <TouchableOpacity style={navBarStyles.iconContainer}>
+          {/* Icon component */}
+        </TouchableOpacity>
+        <View style={navBarStyles.profileCircle}>
+          <Text style={navBarStyles.profileText}>A</Text>
+        </View>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
-export default Navbar;
+export default NavBar;

@@ -12,30 +12,32 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
-# All database-related configurations and models are commented out as per instructions
+# Mock data file path
+mock_data_file = './DeerSafeApp/src/mocks/mock_data.json'
 
-# Endpoint to save detection data and write to mock data file
+# Endpoint to handle detection data and return alerts
 @app.route('/api/deer-detection', methods=['POST'])
-def deer_detection():
+def handle_detection_and_get_alerts():
+    # Retrieve JSON data from request
     data = request.json
-    # If no data is provided in the POST request, use a default detection object
-    detection_data = data if data else {
-        "id": 3,
-        "device": "Raspberry Pi",
-        "time_stamp": "2024-10-31T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "Baltimore",
-        "detection_time": "2024-10-31T15:45:00Z",
-        "detection_id": 5678,
-        "alert_count": 2,
-        "animal_type": "Deer"
+    
+    # Extract fields or set default values
+    detection_data = {
+        "id": data.get('id', 3),
+        "device": data.get('device', "Raspberry Pi"),
+        "time_stamp": data.get('time_stamp', "2024-10-31T15:45:00Z"),
+        "latitude": data.get('location', {}).get('latitude', "34.0522"),
+        "longitude": data.get('location', {}).get('longitude', "-118.2437"),
+        "location": data.get('location', {}).get('name', "SRU"),
+        "detection_time": data.get('detection_time', "2024-10-31T15:45:00Z"),
+        "detection_id": data.get('detection_id', 5678),
+        "alert_count": data.get('alert_count', 2),
+        "animal_type": data.get('animal_type', "Deer")
     }
 
     # Append detection data to mock_data.json file
-    mock_data_file = 'DeerSafeApp/src/mocks/mock_data.json'
     try:
         with open(mock_data_file, 'r+') as file:
             # Load existing data
@@ -53,19 +55,14 @@ def deer_detection():
         logging.error(f"Error appending to mock data file: {e}")
         return jsonify({"error": "Failed to write data"}), 500
 
-    return jsonify({"message": "Detection data received and appended to mock file"}), 200
-
-# Endpoint to fetch recent or all alerts
-@app.route('/alerts', methods=['GET'])
-def get_alerts():
-    # Read and return all data from the mock data file
+    # Return all alerts after updating the file
     try:
-        with open('DeerSafeApp/src/mocks/mock_data.json', 'r') as file:
+        with open(mock_data_file, 'r') as file:
             mock_alerts = json.load(file)
-        return jsonify(mock_alerts), 200
+        return jsonify({"message": "Detection data received and appended", "alerts": mock_alerts}), 200
     except FileNotFoundError:
-        logging.error("Mock data file not found")
+        logging.error("Mock data file not found when retrieving alerts")
         return jsonify({"error": "Mock data file not found"}), 500
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=False, use_reloader=False)

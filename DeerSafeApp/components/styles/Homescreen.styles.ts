@@ -1,7 +1,7 @@
-// DeerSafeApp/components/styles.ts
+//DeerSafeApp/components/styles/Homescreen.styls.ts
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+export const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1A1A1A',
@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 25,
-    paddingVertical: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 25,
     backgroundColor: '#1A1A1A',
   },
   title: {
@@ -78,4 +78,16 @@ export const styles = StyleSheet.create({
     color: '#CCCCCC',
     marginTop: 4,
   },
+  notificationBanner: {
+    position: 'absolute',
+    top: 50,
+    left: 0,
+    right: 0,
+    padding: 10,
+    backgroundColor: 'lightblue',
+    borderRadius: 8,
+    alignItems: 'center',
+  },
 });
+
+export default homeStyles
