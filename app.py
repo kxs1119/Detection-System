@@ -1,11 +1,9 @@
 import logging
+import json
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from flask_migrate import Migrate
-import os
 from dotenv import load_dotenv
-from mock import mock_alerts
+import os
 
 # Load environment variables
 load_dotenv()
@@ -14,74 +12,57 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
-# Configure the database from the config file
-app.config.from_object('src.config.Config')
+# Mock data file path
+mock_data_file = './DeerSafeApp/src/mocks/mock_data.json'
 
-# Initialize SQLAlchemy
-db = SQLAlchemy(app)
-
-# Initialize Flask-Migrate for handling database migrations
-migrate = Migrate(app, db)
-
-# Model for storing detection data
-class Detection(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    device = db.Column(db.String(50))
-    time_stamp = db.Column(db.String(100))
-    latitude = db.Column(db.String(100))
-    longitude = db.Column(db.String(100))
-    location = db.Column(db.String(100))
-    detection_time = db.Column(db.String(100))
-    detection_id = db.Column(db.Integer)
-    alert_count = db.Column(db.Integer)
-    animal_type = db.Column(db.String(50))
-    
-# Endpoint to save detection data and send a notification
+# Endpoint to handle detection data and return alerts
 @app.route('/api/deer-detection', methods=['POST'])
-def deer_detection():
+def handle_detection_and_get_alerts():
+    # Retrieve JSON data from request
     data = request.json
-    if data:
-        # Create a new Detection object
-        new_detection = Detection(
-            device='Raspberry Pi',
-            time_stamp=data.get('time', ''),
-            latitude=data.get('location', {}).get('latitude', ''),
-            longitude=data.get('location', {}).get('longitude', ''),
-            location='Dynamic location',
-            detection_time=data.get('time', ''),
-            detection_id=1234,
-            alert_count=1,
-            animal_type=data.get('detection_type', 'deer')
-        )
-        db.session.add(new_detection)
-        db.session.commit()
+    
+    # Extract fields or set default values
+    detection_data = {
+        "id": data.get('id', 3),
+        "device": data.get('device', "Raspberry Pi"),
+        "time_stamp": data.get('time_stamp', "2024-10-31T15:45:00Z"),
+        "latitude": data.get('location', {}).get('latitude', "34.0522"),
+        "longitude": data.get('location', {}).get('longitude', "-118.2437"),
+        "location": data.get('location', {}).get('name', "SRU"),
+        "detection_time": data.get('detection_time', "2024-10-31T15:45:00Z"),
+        "detection_id": data.get('detection_id', 5678),
+        "alert_count": data.get('alert_count', 2),
+        "animal_type": data.get('animal_type', "Deer")
+    }
 
-        return jsonify({"message": "Detection data received and notification sent"}), 200
+    # Append detection data to mock_data.json file
+    try:
+        with open(mock_data_file, 'r+') as file:
+            # Load existing data
+            file_data = json.load(file)
+            # Append new detection
+            file_data.append(detection_data)
+            # Move the pointer to the beginning of the file before writing
+            file.seek(0)
+            json.dump(file_data, file, indent=4)
+        logging.info("Alert appended to mock data file")
+    except FileNotFoundError:
+        logging.error(f"Mock data file not found at {mock_data_file}")
+        return jsonify({"error": "Mock data file not found"}), 500
+    except Exception as e:
+        logging.error(f"Error appending to mock data file: {e}")
+        return jsonify({"error": "Failed to write data"}), 500
 
-    return jsonify({"message": "Invalid data"}), 400
-
-# Endpoint to fetch recent or all alerts
-@app.route('/alerts', methods=['GET'])
-def get_alerts():
-    # alerts = Detection.query.all()
-    # alert_list = [
-    #     {
-    #         "id": alert.id,
-    #         "device": alert.device,
-    #         "time_stamp": alert.time_stamp,
-    #         "latitude": alert.latitude,
-    #         "longitude": alert.longitude,
-    #         "location": alert.location,
-    #         "detection_time": alert.detection_time,
-    #         "detection_id": alert.detection_id,
-    #         "alert_count": alert.alert_count,
-    #         "animal_type": alert.animal_type,
-    #     }
-    #     for alert in alerts
-    # ]
-    return jsonify(mock_alerts), 200    #TODO: Revise this to alert_list when database is setup
+    # Return all alerts after updating the file
+    try:
+        with open(mock_data_file, 'r') as file:
+            mock_alerts = json.load(file)
+        return jsonify({"message": "Detection data received and appended", "alerts": mock_alerts}), 200
+    except FileNotFoundError:
+        logging.error("Mock data file not found when retrieving alerts")
+        return jsonify({"error": "Mock data file not found"}), 500
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=False, use_reloader=False)
