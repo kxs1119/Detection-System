@@ -4,13 +4,16 @@ import { Animated } from 'react-native';
 
 export const useNotificationBanner = (locations: any[]) => {
   const [previousLocationCount, setPreviousLocationCount] = useState(0);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   const opacityAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    if (locations.length > previousLocationCount) {
+    if (initialLoadComplete && locations.length > previousLocationCount) {
       showNotificationBanner();
-      setPreviousLocationCount(locations.length);
+    } else if (!initialLoadComplete) {
+      setInitialLoadComplete(true);
     }
+    setPreviousLocationCount(locations.length);
   }, [locations]);
 
   const showNotificationBanner = () => {
@@ -32,4 +35,4 @@ export const useNotificationBanner = (locations: any[]) => {
   return opacityAnim;
 };
 
-export default useNotificationBanner
+export default useNotificationBanner;

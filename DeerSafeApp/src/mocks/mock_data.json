@@ -1,23 +1,11 @@
 [
     {
-        "id": 69,
+        "id": 99,
         "device": "Raspberry Pi",
         "time_stamp": "2024-11-01T14:30:00Z",
         "latitude": "40.7306",
         "longitude": "-73.9352",
-        "location": "bruh",
-        "detection_time": "2024-11-01T14:30:00Z",
-        "detection_id": 7890,
-        "alert_count": 3,
-        "animal_type": "Deer"
-    },
-    {
-        "id": 32,
-        "device": "Raspberry Pi",
-        "time_stamp": "2024-11-01T14:30:00Z",
-        "latitude": "40.7306",
-        "longitude": "-73.9352",
-        "location": "bruh",
+        "location": "Slipper Rock University",
         "detection_time": "2024-11-01T14:30:00Z",
         "detection_id": 7890,
         "alert_count": 3,

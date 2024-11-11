@@ -8,12 +8,13 @@ export const notificationBannerStyles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: 10,
-    backgroundColor: 'lightblue',
+    backgroundColor: 'red',
     borderRadius: 8,
     alignItems: 'center',
   },
   bannerText: {
     fontSize: 16,
     color: '#000',
+    fontWeight:'bold',
   },
 });
