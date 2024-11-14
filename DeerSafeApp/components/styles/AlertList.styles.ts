@@ -1,4 +1,3 @@
-// AlertList.styles.ts
 import { StyleSheet } from 'react-native';
 
 export const alertListStyles = StyleSheet.create({
@@ -20,7 +19,7 @@ export const alertListStyles = StyleSheet.create({
   },
   alertContainer: {
     alignItems: 'center',
-    marginRight: 15,
+    marginRight: 15, // Space between each alert item horizontally
   },
   circle: {
     width: 100,
@@ -29,16 +28,16 @@ export const alertListStyles = StyleSheet.create({
     backgroundColor: '#D3D3D3',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden', // Ensure image fits within the circle
   },
-  locationText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginTop: 8,
+  image: {
+    width: '100%',
+    height: '100%',
   },
   timeText: {
     fontSize: 14,
     color: '#CCCCCC',
     marginTop: 4,
+    textAlign: 'center', // Center-align the text below each circle
   },
 });

@@ -1,0 +1,8 @@
+{
+    "ignore_dirs": ["node_modules", ".git", "android", "ios", "build"],
+    "suppress_stack_traces": true,
+    "gc_age": 43200,  
+    "fd_purge_age_seconds": 30,
+    "max_log_size": 10485760,
+    "merge_base_path": "/path/to/your/project"
+  }

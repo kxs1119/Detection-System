@@ -1,6 +1,6 @@
-// components/NotificationBanner.tsx
+// NotificationBanner.tsx
 import React from 'react';
-import { Animated, Text } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 import { notificationBannerStyles } from './styles/NotificationBanner.styles';
 
 interface NotificationBannerProps {

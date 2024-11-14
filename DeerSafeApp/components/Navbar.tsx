@@ -6,11 +6,11 @@ import { navBarStyles } from "./styles/NavBar.styles";
 const NavBar: React.FC = () => {
   return (
     <View style={navBarStyles.container}>
-      <Text style={navBarStyles.title}> Home</Text>
+      <Text style={navBarStyles.title}>Home</Text>
       <View style={navBarStyles.rightIcons}>
-        {/* Example of an icon */}
         <TouchableOpacity style={navBarStyles.iconContainer}>
-          {/* Icon component */}
+          {/* Example Icon component can be added here */}
+          <Text>Icon</Text>
         </TouchableOpacity>
         <View style={navBarStyles.profileCircle}>
           <Text style={navBarStyles.profileText}>A</Text>

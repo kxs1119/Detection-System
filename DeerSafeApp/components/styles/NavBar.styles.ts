@@ -9,6 +9,7 @@ export const navBarStyles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
     backgroundColor: '#1A1A1A', // Dark background color
+    marginTop: 25, // Adjust this value to move the Navbar down
   },
   title: {
     fontSize: 20,
