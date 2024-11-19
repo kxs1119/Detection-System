@@ -1,5 +1,5 @@
 
-# Deer Detection System
+# DeerSafe
 ---
 The **Deer Detection System** is a mobile-friendly application designed to detect animals, such as deer, approaching roads or highways. It gathers geospatial data from sensors, processes it via a Flask backend, and categorizes alerts based on recency for user review. The system also leverages GraphQL for efficient data querying and Supabase for notifications.
 
