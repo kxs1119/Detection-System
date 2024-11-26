@@ -9,7 +9,7 @@ actor Admin
 Sensor -> DetectionSystem : detectDeer()
 DetectionSystem -> Database : queryHighwayData()
 Database --> DetectionSystem : returnHighwayData
-DetectionSystem -> User : sendAlert (if near highway)
+DetectionSystem -> User : sendAlert (if near proximity)
 Admin -> Database : updateHighwayData()
 
 @enduml

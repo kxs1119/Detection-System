@@ -1,48 +1,26 @@
 @startuml
 
-cloud "Database" {
-    class CloudStorage {
-        +storeDeerData()
-        +retrieveGeofenceData()
-        +storeGeofenceData()
-        +getDeerLocations()
-    }
+class deer_detected {
+   +id()
+   +detection_location()
+   +timestamp()
+   +user_location()
+   +token()
+   +viewed()
 }
 
-class Sensor {
-    +detectDeer()
-    +sendDataToDatabase()
+class Users {
+    +name()
+    +email()
+    +phone()
+    +alert_preference()
+    +settings()
+    +username()
+    +password()
+    +user_id()
+    +user_location()
 }
 
-class GeofenceManager {
-    +defineGeofence()
-    +triggerNotification()
-    +storeGeofenceData()
-    +retrieveGeofenceData()
-}
-
-class NotificationSystem {
-    +sendAlert()
-    +sendViaAPI()
-}
-
-class MobileAppUser {
-    +receiveAlert()
-}
-
-class Admin {
-    +monitorSensorData()
-    +adjustGeofence()
-    +manageDatabase()
-}
-
-Sensor --> GeofenceManager : sends data
-Sensor --> CloudStorage : stores detection data
-GeofenceManager --> NotificationSystem : triggers alert
-NotificationSystem --> MobileAppUser : sends notification via Expo Push Notification
-Admin --> GeofenceManager : manages geofence
-Admin --> Sensor : monitors
-GeofenceManager --> CloudStorage : stores geofence data
-NotificationSystem --> CloudStorage : retrieves geofence data
+deer_detected --> Users: Send detected data to user
 
 @enduml

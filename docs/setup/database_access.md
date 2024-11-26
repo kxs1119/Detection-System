@@ -16,10 +16,10 @@ This guide will help you connect to the PostgreSQL database on a Raspberry Pi.
      ```bash
      psql -U <your_database_username> -d <database_name>
      ```
-   - Replace `<your_database_username>` with your assigned PostgreSQL username (e.g., `postgres`), and `<database_name>` with the name of the database (e.g., `deersafe`).
+   - Replace `<your_database_username>` with your assigned PostgreSQL username (e.g., `joe`), and `<database_name>` with the name of the database (e.g., `deersafe`).
    - Example:
      ```bash
-     psql -U postgres -d deersafe
+     psql -U joe -d deersafe
      ```
    - **Password Prompt**: Enter your PostgreSQL password when prompted. Once connected, you’ll be in the PostgreSQL command-line interface.
 
