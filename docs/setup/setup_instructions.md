@@ -36,7 +36,18 @@ python app.py
 
 - Open a browser and go to `http://127.0.0.1:8080` or `http://localhost:8080` to see the Flask app running.
 
-## 4. Deactivate the Virtual Environment
+## 4. Activate the Expo Application
+
+When you're done, run this command to start expo:
+```bash
+expo start -c
+```
+
+---
+
+Follow these steps to set up and run Expo App
+
+## 5. Deactivate the Virtual Environment
 
 When you're done, deactivate the environment by running:
 ```bash
@@ -46,3 +57,5 @@ deactivate
 ---
 
 Follow these steps to set up and run Flask in a virtual environment easily!
+
+

@@ -13,12 +13,8 @@ start
 :Develop Flask Backend for Data Processing;
 :Develop Mobile Application with Flutter for User Alerts;
 
-:Choose Communication Method;
-if (Send Alert via Notification or SMS?) then (Notification)
-    :Integrate Expo Push Notification for Mobile Alerts;
-else (SMS)
-    :Explore Alternative Notification APIs;
-endif
+
+:Integrate Expo Push Notification for Mobile Alerts;
 
 :Test Real-time Processing and Sensor Detection on Embedded Device;
 :Test Data Flow to PostgreSQL Database and Mobile Application;
