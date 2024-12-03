@@ -5,41 +5,11 @@
         "time_stamp": "2024-11-13T15:45:00Z",
         "latitude": "34.0522",
         "longitude": "-118.2437",
-        "location": "SRU",
+        "location": "1 Morrow Way",
         "detection_time": "2024-11-13T15:50:00Z",
         "detection_id": 9876,
         "alert_count": 3,
-        "animal_type": "Deer",
-        "token": "0d6567bd-17e5-42f9-9a6d-87451edf4a82",
-        "viewed": true
-    },
-    {
-        "id": 22,
-        "device": "Raspberry Pi 4",
-        "time_stamp": "2024-11-13T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "SRU",
-        "detection_time": "2024-11-13T15:50:00Z",
-        "detection_id": 9876,
-        "alert_count": 3,
-        "animal_type": "Deer",
-        "token": "ae0770a9-1929-4e1a-9961-f09f4b7439b7",
-        "viewed": true
-    },
-    {
-        "id": 695,
-        "device": "Raspberry Pi 4",
-        "time_stamp": "2024-11-13T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "Waynesboro",
-        "detection_time": "2024-11-13T15:50:00Z",
-        "detection_id": 9876,
-        "alert_count": 3,
-        "animal_type": "Deer",
-        "token": "cc9895fa-6088-4e78-a885-961909c19160",
-        "viewed": true
+        "animal_type": "Deer"
     },
     {
         "id": 795,
@@ -47,13 +17,22 @@
         "time_stamp": "2024-11-13T15:45:00Z",
         "latitude": "34.0522",
         "longitude": "-118.2437",
-        "location": "Kiyoto",
+        "location": "sock",
         "detection_time": "2024-11-13T15:50:00Z",
         "detection_id": 9876,
         "alert_count": 3,
-        "animal_type": "Deer",
-        "token": "acfa5a16-f318-420c-a894-a0d9184284e6",
-        "viewed": false
+        "animal_type": "Deer"
+    },
+    {
+        "id": 2,
+        "device": "Raspberry Pi 4",
+        "time_stamp": "2024-11-13T15:45:00Z",
+        "latitude": "34.0522",
+        "longitude": "-118.2437",
+        "location": "abc",
+        "detection_time": "2024-11-13T15:50:00Z",
+        "detection_id": 9876,
+        "alert_count": 3,
+        "animal_type": "Deer"
     }
-    
 ]

@@ -10,9 +10,10 @@ import NotificationBanner from './components/NotificationBanner';
 import homeStyles from './components/styles/Homescreen.styles';
 import { useNotificationBanner } from './src/hooks/useNotificationBanner';
 import { getElapsedTime } from './src/utils/timeElapsed';
+import * as SplashScreen from 'expo-splash-screen';
 
 const App: React.FC = () => {
-  const [appIsReady, setAppIsReady] = useState(false);
+  const [appIsReady, setAppIsReady] = useState(false); // Tracks if app is ready
   const [locations, setLocations] = useState<AlertLocation[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [notificationMessage, setNotificationMessage] = useState<string>('');
@@ -25,15 +26,24 @@ const App: React.FC = () => {
       try {
         // Load any required fonts here if necessary
         await Font.loadAsync({
-          // 'CustomFont': require('./assets/fonts/CustomFont.ttf') - Add custom fonts if needed
+          // Add any fonts you need here (if any)
+          // 'CustomFont': require('./assets/fonts/CustomFont.ttf')
         });
+
+        // App is ready, hide splash screen
         setAppIsReady(true);
       } catch (err) {
         console.error('Error loading fonts:', err);
       }
     };
     prepare();
-  }, []);
+  }, []); // This will run once when the app is mounted
+
+  useEffect(() => {
+    if (appIsReady) {
+      SplashScreen.hideAsync(); // Hide splash screen after app is ready
+    }
+  }, [appIsReady]); // When appIsReady is set to true, hide the splash screen
 
   useEffect(() => {
     const loadAlerts = async () => {
@@ -66,12 +76,14 @@ const App: React.FC = () => {
     };
 
     loadAlerts();
-  }, []);
+  }, []); // This will run once when the app is mounted
 
+  // Display the splash screen until the app is ready
   if (!appIsReady) {
     return <SplashScreenComponent />;
   }
 
+  // Main app content
   return (
     <View style={homeStyles.container}>
       <Navbar />

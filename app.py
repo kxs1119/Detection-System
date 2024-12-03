@@ -24,8 +24,8 @@ def handle_alerts():
     # Retrieve JSON data from request
     data = request.json
     
-    # Generate a unique token for the alert
-    token = str(uuid.uuid4())
+    # # Generate a unique token for the alert
+    # token = str(uuid.uuid4())
 
     # Extract fields or set default values, including the new token and viewed status
     alert_data = {
@@ -38,9 +38,7 @@ def handle_alerts():
         "detection_time": data.get('detection_time', "2024-10-31T15:45:00Z"),
         "detection_id": data.get('detection_id', 5678),
         "alert_count": data.get('alert_count', 2),
-        "animal_type": data.get('animal_type', "Deer"),
-        "token": token,               # Unique token for each alert
-        "viewed": False               # Viewed status, initially False
+        "animal_type": data.get('animal_type', "Deer")
     }
 
     # Append alert data to mock_data.json file
@@ -70,34 +68,34 @@ def handle_alerts():
         logging.error("Mock data file not found when retrieving alerts")
         return jsonify({"error": "Mock data file not found"}), 500
 
-# Endpoint to mark an alert as viewed by token
-@app.route('/api/alerts/<token>/viewed', methods=['POST'])
-def mark_alert_as_viewed(token):
-    try:
-        with open(mock_data_file, 'r+') as file:
-            # Load existing data
-            file_data = json.load(file)
-            # Find alert with the specified token and mark it as viewed
-            for alert in file_data:
-                if alert.get("token") == token:
-                    alert["viewed"] = True
-                    break
-            else:
-                logging.warning(f"Alert with token {token} not found")
-                return jsonify({"error": "Alert not found"}), 404
+# # Endpoint to mark an alert as viewed by token
+# @app.route('/api/alerts/<token>/viewed', methods=['POST'])
+# def mark_alert_as_viewed(token):
+#     try:
+#         with open(mock_data_file, 'r+') as file:
+#             # Load existing data
+#             file_data = json.load(file)
+#             # Find alert with the specified token and mark it as viewed
+#             for alert in file_data:
+#                 if alert.get("token") == token:
+#                     alert["viewed"] = True
+#                     break
+#             else:
+#                 logging.warning(f"Alert with token {token} not found")
+#                 return jsonify({"error": "Alert not found"}), 404
             
-            # Move pointer to beginning and update the file
-            file.seek(0)
-            json.dump(file_data, file, indent=4)
-            file.truncate()  # Ensure old data is overwritten
-        logging.info(f"Alert with token {token} marked as viewed")
-        return jsonify({"message": "Alert marked as viewed"}), 200
-    except FileNotFoundError:
-        logging.error(f"Mock data file not found at {mock_data_file}")
-        return jsonify({"error": "Mock data file not found"}), 500
-    except Exception as e:
-        logging.error(f"Error updating mock data file: {e}")
-        return jsonify({"error": "Failed to update alert"}), 500
+#             # Move pointer to beginning and update the file
+#             file.seek(0)
+#             json.dump(file_data, file, indent=4)
+#             file.truncate()  # Ensure old data is overwritten
+#         logging.info(f"Alert with token {token} marked as viewed")
+#         return jsonify({"message": "Alert marked as viewed"}), 200
+#     except FileNotFoundError:
+#         logging.error(f"Mock data file not found at {mock_data_file}")
+#         return jsonify({"error": "Mock data file not found"}), 500
+#     except Exception as e:
+#         logging.error(f"Error updating mock data file: {e}")
+#         return jsonify({"error": "Failed to update alert"}), 500
     
 @app.route('/test', methods=['GET'])
 def test():
