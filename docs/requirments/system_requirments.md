@@ -8,24 +8,23 @@
   - **Connectivity**: Wi-Fi or Ethernet for internet/cloud access
 - **Power Supply**: 5V 3A USB-C power supply for Raspberry Pi
 - **Sensors**:
-  - **GPS Sensor**: 
-- **Alerting Device**: Smartphone via DeerSafe mobile application
+  - **PIR Motion Sensor**: e.g., HC-SR501 (for detecting animal movement)
+- **Alerting Device**: Smartphone via DeerSafe 
 
 ## 2. Software Requirements
 - **Operating System**: Raspberry Pi OS (32-bit recommended, based on Debian)
 - **Programming Language**:
-  - **Python 3** : preferred for sensor integration
-    - **Python Required Libraries**
-      - Flask
-      - SQLAlchemy
-      - jsonify
-      - request
-  - **Typescript**: Used to compile the mobile application
+  - **Python 3** (preferred for sensor integration and 
+- **Required Python Libraries**:
+  -  `gpiozero` (for sensor control)
+  - `requests` (for sending data to cloud services or APIs)
+- **Software**:
+  - **Geofencing**: PostGIS or cloud-based geolocation service (if using cloud)
 
 ## 3. Functional Requirements
-- **Animal Detection**: The system must accurately detect animals approaching the highway using sensors (PIR/GPS).
-- **Geospatial data**: The alert will trigger when set near a highway surronding datapoints (longitude/latitude)
-- **Alert System**: The system must send a real-time alert via Alerts within app to nearby users.
+- **Animal Detection**: The system must accurately detect animals approaching the highway using sensors (PIR/Ultrasonic).
+- **Geofencing Logic**: The system must trigger an alert when an animal is detected within a predefined geofenced area.
+- **Alert System**: The system must send a real-time alert via SMS or GPS to nearby users.
 - **Local Processing**: Must process data locally on the Raspberry Pi to reduce latency in detecting animals and triggering alerts.
 - **Cloud Connectivity** (optional): Send animal detection data to the cloud for remote monitoring and logging.
 
