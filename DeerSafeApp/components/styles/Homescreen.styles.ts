@@ -1,4 +1,3 @@
-//DeerSafeApp/components/styles/Homescreen.styls.ts
 import { StyleSheet } from 'react-native';
 
 export const homeStyles = StyleSheet.create({
@@ -90,4 +89,4 @@ export const homeStyles = StyleSheet.create({
   },
 });
 
-export default homeStyles
+export default homeStyles;

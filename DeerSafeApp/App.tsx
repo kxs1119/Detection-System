@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { View, Alert, Text } from 'react-native';
 import * as Font from 'expo-font';
-import { getAlertLocations, markAlertAsViewed } from './src/services/alertServices';
+import { getAlertLocations} from './src/services/alertServices';
 import { AlertLocation } from './src/models/AlertLocation';
 import SplashScreenComponent from './src/screens/SplashScreen';
 import Navbar from './components/Navbar';
 import AlertList from './components/AlertList';
 import NotificationBanner from './components/NotificationBanner';
 import homeStyles from './components/styles/Homescreen.styles';
+import MapComponent from './components/MapComponent';
+import mapStyles from './components/styles/MapComponent.styles';
 import { useNotificationBanner } from './src/hooks/useNotificationBanner';
 import { getElapsedTime } from './src/utils/timeElapsed';
 import * as SplashScreen from 'expo-splash-screen';
@@ -96,6 +98,10 @@ const App: React.FC = () => {
         {error && <Text style={{ color: 'red', padding: 10 }}>{error}</Text>}
 
         <AlertList locations={locations} error={error} />
+
+      </View>
+      <View style={mapStyles.container}>
+      <MapComponent />
       </View>
     </View>
   );
