@@ -10,6 +10,7 @@ const mapStyles = StyleSheet.create({
   },
   map: {
     flex: 1, // Ensures the map stretches to fill the container
+    ...StyleSheet.absoluteFillObject, // Make sure the map fills its container
   },
 });
 

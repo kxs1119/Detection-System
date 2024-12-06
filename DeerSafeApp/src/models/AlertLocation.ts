@@ -1,15 +1,14 @@
-// src/models/AlertLocation.ts
 export interface AlertLocation {
   id: number;
   device: string;
   time_stamp: string;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   location: string;
   detection_time: string;
   detection_id: number;
   alert_count: number;
-  animal_type: string;
-  token?: string; // Mark as optional
-  viewed?: boolean; // Mark as optional
+  title: string;
+  description: string;
+  animal_type?: string; // Make this optional
 }

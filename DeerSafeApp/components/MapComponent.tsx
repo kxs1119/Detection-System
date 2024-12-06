@@ -1,47 +1,66 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
-import MapView, { Marker, UrlTile } from 'react-native-maps';
+import { Dimensions, View, Text, Button, StyleSheet, Linking } from 'react-native';
+import MapView, { Circle, Marker, UrlTile } from 'react-native-maps';
+import mapStyles from './styles/MapComponent.styles';
+import { AlertLocation } from '../src/models/AlertLocation';
 
-const MapComponent = () => {
+interface MapComponentProps {
+  alerts: AlertLocation[];
+}
+
+const MapComponent: React.FC<MapComponentProps> = ({ alerts }) => {
   const { width, height } = Dimensions.get('window');
   const aspectRatio = width / height;
-  const latitude = 41.0632; // Latitude for 1 Morrow Way, Slippery Rock, PA
-  const longitude = -80.0461; // Longitude for 1 Morrow Way, Slippery Rock, PA
-  const latitudeDelta = 0.005; // Smaller delta for a closer zoom
+  const latitudeDelta = 0.005;
   const longitudeDelta = latitudeDelta * aspectRatio;
 
+  const initialRegion = {
+    latitude: 41.0632, // Default latitude
+    longitude: -80.0461, // Default longitude
+    latitudeDelta,
+    longitudeDelta,
+  };
+
+  // Function to open Google Maps
+  const openGoogleMaps = (latitude: number, longitude: number) => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+    Linking.openURL(url).catch(err => console.error('Error opening Google Maps:', err));
+  };
+
   return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude,
-          longitude,
-          latitudeDelta,
-          longitudeDelta,
-        }}
-      >
+    <View style={mapStyles.container}>
+      <MapView style={mapStyles.map} initialRegion={initialRegion}>
         <UrlTile
           urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maximumZ={19}
           flipY={false}
         />
-        <Marker
-          coordinate={{ latitude, longitude }}
-          title="1 Morrow Way"
-          description="Slippery Rock, PA 16057"
-        />
+        {alerts.length > 0 ? (
+          alerts.map((alert, index) => (
+            <Circle
+              key={index}
+              center={{
+                latitude: typeof alert.latitude === 'string' ? parseFloat(alert.latitude) : alert.latitude,
+                longitude: typeof alert.longitude === 'string' ? parseFloat(alert.longitude) : alert.longitude,
+              }}
+              radius={10} // Radius of n {whatever is changed}
+              fillColor='pink'
+            />
+          ))
+        ) : (
+          <Text style={{ textAlign: 'center', marginTop: 20 }}>No alerts to display</Text>
+        )}
       </MapView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
   },
 });
 

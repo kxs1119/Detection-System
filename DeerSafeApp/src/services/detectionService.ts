@@ -12,7 +12,7 @@ interface DetectionData {
 
 export const sendDeerDetection = async (detectionData: DetectionData) => {
   try {
-    const response = await apiClient.post('/api/deer-detection', detectionData);
+    const response = await apiClient.post('/api/alerts', detectionData);
     return response.data;
   } catch (error) {
     console.error("Error sending detection data:", error);
