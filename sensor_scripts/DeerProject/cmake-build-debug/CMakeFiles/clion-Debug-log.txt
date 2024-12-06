@@ -1,0 +1,22 @@
+/opt/clion-2024.2.3/bin/cmake/linux/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion-2024.2.3/bin/ninja/linux/aarch64/ninja -G Ninja -S /home/raspberrypi/DeerProject -B /home/raspberrypi/DeerProject/cmake-build-debug
+CMake Deprecation Warning at lib/pigpio-master/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Warning (dev) at /opt/clion-2024.2.3/bin/cmake/linux/aarch64/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (rt) does
+  not match the name of the calling package (RT).  This can lead to problems
+  in calling code that expects `find_package` result variables (e.g.,
+  `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  lib/pigpio-master/cmake/FindRT.cmake:28 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  lib/pigpio-master/CMakeLists.txt:8 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done (10.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/raspberrypi/DeerProject/cmake-build-debug

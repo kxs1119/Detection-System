@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/DeerProject.dir/src/init.c.o CMakeFiles/DeerProject.dir/src/read_sensors.c.o CMakeFiles/DeerProject.dir/src/pulse.c.o CMakeFiles/DeerProject.dir/src/gps.c.o -o DeerProject  -Wl,-rpath,/home/raspberrypi/DeerProject/lib/pigpio-master lib/pigpio-master/libpigpio.so 
