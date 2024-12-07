@@ -55,13 +55,5 @@ const MapComponent: React.FC<MapComponentProps> = ({ alerts }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 20,
-    left: 20,
-    right: 20,
-  },
-});
 
 export default MapComponent;

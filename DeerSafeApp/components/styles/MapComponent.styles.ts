@@ -12,6 +12,12 @@ const mapStyles = StyleSheet.create({
     flex: 1, // Ensures the map stretches to fill the container
     ...StyleSheet.absoluteFillObject, // Make sure the map fills its container
   },
+    buttonContainer: {
+      position: 'absolute',
+      bottom: 20,
+      left: 20,
+      right: 20,
+    },
 });
 
 export default mapStyles;
