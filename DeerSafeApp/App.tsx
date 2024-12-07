@@ -12,6 +12,7 @@ import { AlertLocation } from './src/models/AlertLocation';
 import homeStyles from './components/styles/Homescreen.styles';
 import mapStyles from './components/styles/MapComponent.styles';
 import { getElapsedTime } from './src/utils/timeElapsed';
+import UserLocation from './components/UserLocation';
 
 const App: React.FC = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -80,6 +81,9 @@ const App: React.FC = () => {
 
   return (
     <View style={homeStyles.container}>
+
+      <UserLocation />
+
       <Navbar />
 
       {showBanner && (
