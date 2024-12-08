@@ -17,7 +17,7 @@
         "id": 4,
         "device": "Sensor-001",
         "time_stamp": "2024-12-05T12:00:00Z",
-        "latitude": 41.0639,
+        "latitude": 41.0641,
         "longitude": -80.0461,
         "location": "Slippery Rock, PA",
         "detection_time": "2024-12-05T12:05:00Z",
