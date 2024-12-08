@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import Navbar from './components/Navbar';
 import AlertList from './components/AlertList';
 import NotificationBanner from './components/NotificationBanner';
-import EnhancedMapComponent from './components/MapComponent';
+import MapComponent from './components/MapComponent';
 import { useNotificationBanner } from './src/hooks/useNotificationBanner';
 import { getAlertLocations } from './src/services/alertServices';
 import { AlertLocation } from './src/models/AlertLocation';
@@ -100,7 +100,7 @@ const App: React.FC = () => {
       </View>
 
       <View style={mapStyles.container}>
-        <EnhancedMapComponent alerts={locations} />
+        <MapComponent alerts={locations} />
       </View>
     </View>
   );

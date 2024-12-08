@@ -10,7 +10,7 @@ interface EnhancedMapComponentProps {
   alerts: AlertLocation[];
 }
 
-const EnhancedMapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
+const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
   const [location, setLocation] = useState<LocationObject | null>(null);
   const [heading, setHeading] = useState<number>(0);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -240,4 +240,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EnhancedMapComponent;
+export default MapComponent;
