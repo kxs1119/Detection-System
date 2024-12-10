@@ -15,3 +15,8 @@ The **Deer Detection System** is a mobile-friendly application designed to detec
 - **Future Features**:
   - **Map Integration**: Planned to display animal sighting locations on a map interface, allowing users to view real-time and historical sighting data visually.
   - **Desktop Compatibility**: A future goal is to extend the application for desktop use, ensuring seamless access across devices.
+## Installation
+
+- See (Adding .md file here) for Raspberry Pi Setup
+- See (Adding .md file here) for Sensor Setup
+- See (Adding .md file here) for Application startup
