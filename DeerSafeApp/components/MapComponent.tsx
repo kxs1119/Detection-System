@@ -10,18 +10,66 @@ interface EnhancedMapComponentProps {
   alerts: AlertLocation[];
 }
 
+const isPointInViewingAngle = (
+  userHeading: number,
+  userLocation: { latitude: number; longitude: number },
+  pointLocation: { latitude: number; longitude: number },
+  viewAngle: number = 60
+): boolean => {
+  const toRadian = (angle: number) => (angle * Math.PI) / 180;  // convert to radians
+  const toDegree = (radian: number) => (radian * 180 / Math.PI); // convert to degrees
+
+  const lat1 = toRadian(userLocation.latitude);
+  const lon1 = toRadian(userLocation.longitude);
+  const lat2 = toRadian(pointLocation.latitude);
+  const lon2 = toRadian(pointLocation.longitude);
+
+  const dLon = lon2 - lon1;
+
+  const y = Math.sin(dLon) * Math.cos(lat2);
+  const x = Math.cos(lat1) * Math.sin(lat2) -
+           Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+
+  let bearing = toDegree(Math.atan2(y, x));
+  bearing = (bearing + 360) % 360;
+
+  const diff = Math.abs((bearing - userHeading + 360) % 360);
+  return diff <= viewAngle / 2 || diff >= (360 - viewAngle / 2);
+};
+
 const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
   const [location, setLocation] = useState<LocationObject | null>(null);
   const [heading, setHeading] = useState<number>(0);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFollowingUser, setIsFollowingUser] = useState(true);
+  const [visibleAlerts, setVisibleAlerts] = useState<AlertLocation[]>([]);
   const mapRef = useRef<MapView | null>(null);
 
   const { width, height } = Dimensions.get('window');
   const aspectRatio = width / height;
   const latitudeDelta = 0.005;
   const longitudeDelta = latitudeDelta * aspectRatio;
+
+  // Update visible alerts whenever heading or location changes
+  useEffect(() => {
+    if (location) {
+      const filteredAlerts = alerts.filter(alert => 
+        isPointInViewingAngle(
+          heading,
+          {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude
+          },
+          {
+            latitude: typeof alert.latitude === 'string' ? parseFloat(alert.latitude) : alert.latitude,
+            longitude: typeof alert.longitude === 'string' ? parseFloat(alert.longitude) : alert.longitude
+          }
+        )
+      );
+      setVisibleAlerts(filteredAlerts);
+    }
+  }, [heading, location, alerts]);
 
   const centerOnUser = () => {
     if (location && mapRef.current) {
@@ -31,7 +79,7 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
         longitude,
         latitudeDelta,
         longitudeDelta,
-      }, 500); // 500ms animation duration
+      }, 500);
       setIsFollowingUser(true);
     }
   };
@@ -46,14 +94,12 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           return;
         }
 
-        // Get initial location
         const initialLocation = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High
         });
         setLocation(initialLocation);
         setIsLoading(false);
 
-        // Watch position with high accuracy
         const locationSubscription = await Location.watchPositionAsync(
           {
             accuracy: Location.Accuracy.High,
@@ -62,7 +108,6 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           },
           (loc) => {
             setLocation(loc);
-            // If following user, update map position
             if (isFollowingUser && mapRef.current) {
               mapRef.current.animateToRegion({
                 latitude: loc.coords.latitude,
@@ -74,7 +119,6 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           }
         );
 
-        // Watch heading for marker rotation
         const headingSubscription = await Location.watchHeadingAsync((headingData) => {
           setHeading(headingData.trueHeading);
         });
@@ -137,7 +181,7 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           flipY={false}
         />
 
-        {alerts.map((alert, index) => (
+        {visibleAlerts.map((alert, index) => (
           <Circle
             key={index}
             center={{

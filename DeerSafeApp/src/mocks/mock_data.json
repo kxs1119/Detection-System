@@ -1,13 +1,13 @@
 [
     {
-        "id": 4,
-        "device": "Sensor-001",
-        "timestamp": "2024-12-05T12:00:00Z",
-        "latitude": 41.0641,
-        "longitude": -80.0461,
-        "location": "Slippery Rock, PA",
+        "id": 1,
+        "device": "ESP32-CAM-01",
+        "timestamp": "2024-10-31T15:45:00Z",
+        "latitude": 29.7128,
+        "longitude": -74.006,
+        "location": "Route 27",
         "animal_type": "Deer",
         "alert_count": 1,
-        "description": "Deer detected near the highway intersection."
+        "description": "Single deer detected crossing the road"
     }
 ]

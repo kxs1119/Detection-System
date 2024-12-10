@@ -1,9 +1,11 @@
-// src/services/apiClient.ts
+// apiClient.ts
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://10.0.2.2:8000', // localhost
-  timeout: 3000,
+  baseURL: 'http://127.0.0.1:8080/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 export default apiClient;
