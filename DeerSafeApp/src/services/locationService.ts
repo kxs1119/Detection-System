@@ -26,7 +26,7 @@ export const sendLocationToBackend = async (location: Location.LocationObject) =
             body: JSON.stringify({
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
-                timestamp: location.timestamp
+                radius: 20 // raduis in miles around the end user 
             })
         });
 
