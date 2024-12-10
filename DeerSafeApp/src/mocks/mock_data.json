@@ -1,38 +1,30 @@
 [
     {
-        "id": 101,
-        "device": "Raspberry Pi 4",
-        "time_stamp": "2024-11-13T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "1 Morrow Way",
-        "detection_time": "2024-11-13T15:50:00Z",
-        "detection_id": 9876,
-        "alert_count": 3,
-        "animal_type": "Deer"
+        "id": 4,
+        "device": "Sensor-001",
+        "time_stamp": "2024-12-05T12:00:00Z",
+        "latitude": 41.0635,
+        "longitude": -80.0461,
+        "location": "Slippery Rock, PA",
+        "detection_time": "2024-12-05T12:05:00Z",
+        "detection_id": 101,
+        "animal_type": "Deer",
+        "alert_count": 1,
+        "title": "Deer",
+        "description": "Deer detected near the highway intersection."
     },
     {
-        "id": 795,
-        "device": "Raspberry Pi 4",
-        "time_stamp": "2024-11-13T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "sock",
-        "detection_time": "2024-11-13T15:50:00Z",
-        "detection_id": 9876,
-        "alert_count": 3,
-        "animal_type": "Deer"
-    },
-    {
-        "id": 2,
-        "device": "Raspberry Pi 4",
-        "time_stamp": "2024-11-13T15:45:00Z",
-        "latitude": "34.0522",
-        "longitude": "-118.2437",
-        "location": "abc",
-        "detection_time": "2024-11-13T15:50:00Z",
-        "detection_id": 9876,
-        "alert_count": 3,
-        "animal_type": "Deer"
+        "id": 4,
+        "device": "Sensor-001",
+        "time_stamp": "2024-12-05T12:00:00Z",
+        "latitude": 41.0641,
+        "longitude": -80.0461,
+        "location": "Slippery Rock, PA",
+        "detection_time": "2024-12-05T12:05:00Z",
+        "detection_id": 101,
+        "animal_type": "Deer",
+        "alert_count": 1,
+        "title": "Deer",
+        "description": "Deer detected near the highway intersection."
     }
 ]
