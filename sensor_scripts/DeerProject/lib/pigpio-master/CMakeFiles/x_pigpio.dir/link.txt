@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/x_pigpio.dir/x_pigpio.c.o -o x_pigpio  -Wl,-rpath,/home/raspberrypi/DeerProject/lib/pigpio-master libpigpio.so -Wl,-Bstatic -lrt -Wl,-Bdynamic 

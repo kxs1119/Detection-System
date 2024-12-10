@@ -1,0 +1,176 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.29"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "lib/pigpio-master",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.pigpio-master-Debug-4b8644e2eca33998a5b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "lib/pigpio-master",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "DeerProject",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "pigpio",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "DeerProject::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DeerProject-Debug-7179700fa8016bc55317.json",
+					"name" : "DeerProject",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pig2vcd::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pig2vcd-Debug-60ebc8650478eeee9a10.json",
+					"name" : "pig2vcd",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pigpio::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pigpio-Debug-76d85f4b28b40c45d448.json",
+					"name" : "pigpio",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pigpiod::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pigpiod-Debug-931a726dfd0dfe7a6e97.json",
+					"name" : "pigpiod",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pigpiod_if::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pigpiod_if-Debug-1a820e75c8e44d7226fd.json",
+					"name" : "pigpiod_if",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pigpiod_if2::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pigpiod_if2-Debug-b8dd0f23315aeea75684.json",
+					"name" : "pigpiod_if2",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pigs::@745ea26e4c38f070066b",
+					"jsonFile" : "target-pigs-Debug-417c8eed39019a628681.json",
+					"name" : "pigs",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "x_pigpio::@745ea26e4c38f070066b",
+					"jsonFile" : "target-x_pigpio-Debug-0490587b3b5fc6a254f9.json",
+					"name" : "x_pigpio",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "x_pigpiod_if::@745ea26e4c38f070066b",
+					"jsonFile" : "target-x_pigpiod_if-Debug-1e261822b37b12aeedcf.json",
+					"name" : "x_pigpiod_if",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "x_pigpiod_if2::@745ea26e4c38f070066b",
+					"jsonFile" : "target-x_pigpiod_if2-Debug-7574ab7c10a926855265.json",
+					"name" : "x_pigpiod_if2",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/raspberrypi/DeerProject/cmake-build-debug",
+		"source" : "/home/raspberrypi/DeerProject"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

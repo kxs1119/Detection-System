@@ -1,0 +1,234 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/pigpio-master/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 74,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 83,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 107,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 122,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/pigpio-master/libpigpio.so"
+			],
+			"targetId" : "pigpio::@745ea26e4c38f070066b",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/pigpio-master/libpigpiod_if.so"
+			],
+			"targetId" : "pigpiod_if::@745ea26e4c38f070066b",
+			"targetIndex" : 4,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/pigpio-master/libpigpiod_if2.so"
+			],
+			"targetId" : "pigpiod_if2::@745ea26e4c38f070066b",
+			"targetIndex" : 5,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"lib/pigpio-master/pig2vcd"
+			],
+			"targetId" : "pig2vcd::@745ea26e4c38f070066b",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"lib/pigpio-master/pigpiod"
+			],
+			"targetId" : "pigpiod::@745ea26e4c38f070066b",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"lib/pigpio-master/pigs"
+			],
+			"targetId" : "pigs::@745ea26e4c38f070066b",
+			"targetIndex" : 6,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/pigpio",
+			"exportName" : "pigpioTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "pigpio::@745ea26e4c38f070066b",
+					"index" : 2
+				},
+				{
+					"id" : "pigpiod_if::@745ea26e4c38f070066b",
+					"index" : 4
+				},
+				{
+					"id" : "pigpiod_if2::@745ea26e4c38f070066b",
+					"index" : 5
+				},
+				{
+					"id" : "pig2vcd::@745ea26e4c38f070066b",
+					"index" : 1
+				},
+				{
+					"id" : "pigpiod::@745ea26e4c38f070066b",
+					"index" : 3
+				},
+				{
+					"id" : "pigs::@745ea26e4c38f070066b",
+					"index" : 6
+				}
+			],
+			"paths" : 
+			[
+				"lib/pigpio-master/CMakeFiles/Export/e41ee19b7ad2f70525cf8c6adfd2f556/pigpioTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/pigpio",
+			"paths" : 
+			[
+				"lib/pigpio-master/cmake/pigpioConfig.cmake",
+				"cmake-build-debug/lib/pigpio-master/pigpioConfigVersion.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"lib/pigpio-master/pigpio.h",
+				"lib/pigpio-master/pigpiod_if.h",
+				"lib/pigpio-master/pigpiod_if2.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "man/man1",
+			"paths" : 
+			[
+				"lib/pigpio-master/libpigpio.so.1",
+				"lib/pigpio-master/libpigpiod_if.so.1",
+				"lib/pigpio-master/libpigpiod_if2.so.1",
+				"lib/pigpio-master/pig2vcd.1",
+				"lib/pigpio-master/pigpiod.1",
+				"lib/pigpio-master/pigs.1"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "man/man3",
+			"paths" : 
+			[
+				"lib/pigpio-master/pigpio.3",
+				"lib/pigpio-master/pigpiod_if.3",
+				"lib/pigpio-master/pigpiod_if2.3"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "Unspecified",
+			"type" : "code"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/pigpio-master",
+		"source" : "lib/pigpio-master"
+	}
+}

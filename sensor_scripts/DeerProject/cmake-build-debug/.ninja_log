@@ -1,0 +1,7 @@
+# ninja log v6
+4	1564	1731693837682164157	build.ninja	351c6e19c5ccb001
+2	593	1731690244042260848	CMakeFiles/DeerProject.dir/init.c.o	7a23b80675030e4c
+4768	4855	1731691883441287713	DeerProject	a68c2d92568102db
+9	597	1731691878681318752	lib/pigpio-master/CMakeFiles/pigpio.dir/command.c.o	60f7356caba7ac62
+5	4672	1731691878677318778	lib/pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o	8c46b78bac67ed34
+4673	4768	1731691883345288341	lib/pigpio-master/libpigpio.so	e7386a5789c85477
