@@ -5,6 +5,8 @@ import * as Location from 'expo-location';
 import { LocationObject } from 'expo-location';
 import { AlertLocation } from '../src/models/AlertLocation';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { recieveAlertFromBackend, sendLocationToBackend } from '../src/services/locationService'
+import AlertList from './AlertList';
 
 interface EnhancedMapComponentProps {
   alerts: AlertLocation[];
@@ -16,8 +18,8 @@ const isPointInViewingAngle = (
   pointLocation: { latitude: number; longitude: number },
   viewAngle: number = 60
 ): boolean => {
-  const toRadian = (angle: number) => (angle * Math.PI) / 180;  // convert to radians
-  const toDegree = (radian: number) => (radian * 180 / Math.PI); // convert to degrees
+  const toRadian = (angle: number) => (angle * Math.PI) / 180;
+  const toDegree = (radian: number) => (radian * 180 / Math.PI);
 
   const lat1 = toRadian(userLocation.latitude);
   const lon1 = toRadian(userLocation.longitude);
@@ -44,6 +46,7 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFollowingUser, setIsFollowingUser] = useState(true);
   const [visibleAlerts, setVisibleAlerts] = useState<AlertLocation[]>([]);
+  const [nearbyAlerts, setNearbyAlerts] = useState<AlertLocation[]>([]);
   const mapRef = useRef<MapView | null>(null);
 
   const { width, height } = Dimensions.get('window');
@@ -51,7 +54,16 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
   const latitudeDelta = 0.005;
   const longitudeDelta = latitudeDelta * aspectRatio;
 
-  // Update visible alerts whenever heading or location changes
+  const checkForAlerts = async (loc: LocationObject) => {
+    try {
+      await sendLocationToBackend(loc);
+      const receivedAlerts = await recieveAlertFromBackend(loc);
+      setNearbyAlerts(receivedAlerts);
+    } catch (error) {
+      console.error('Failed to check for alerts:', error);
+    }
+  };
+
   useEffect(() => {
     if (location) {
       const filteredAlerts = alerts.filter(alert => 
@@ -98,6 +110,7 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           accuracy: Location.Accuracy.High
         });
         setLocation(initialLocation);
+        await checkForAlerts(initialLocation);
         setIsLoading(false);
 
         const locationSubscription = await Location.watchPositionAsync(
@@ -106,8 +119,10 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
             timeInterval: 1000,
             distanceInterval: 1,
           },
-          (loc) => {
+          async (loc) => {
             setLocation(loc);
+            await checkForAlerts(loc);
+            
             if (isFollowingUser && mapRef.current) {
               mapRef.current.animateToRegion({
                 latitude: loc.coords.latitude,
@@ -225,6 +240,11 @@ const MapComponent: React.FC<EnhancedMapComponentProps> = ({ alerts }) => {
           color="#007AFF"
         />
       </TouchableOpacity>
+
+      <AlertList 
+        alerts={nearbyAlerts} 
+        error={errorMsg}
+/>
     </View>
   );
 };

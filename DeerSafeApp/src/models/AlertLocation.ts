@@ -12,4 +12,5 @@ export interface AlertLocation {
   title?: string;          // Made optional
   description: string;
   animal_type?: string;    // Already optional
+  alerts: AlertLocation[];
 }
