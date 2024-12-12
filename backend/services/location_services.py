@@ -4,6 +4,7 @@ import asyncio
 import math
 
 def process_location(data):
+    logging.info('we are in boyz')
     try:
         latitude, longitude = data["latitude"], data["longitude"]
         
@@ -11,7 +12,7 @@ def process_location(data):
 
         print(f"Nearest point found!\nLatitude: {nearest_point['latitude']}\nLongitude: {nearest_point['longitude']}\nDistance: {nearest_point['distance']}km\n")
 
-        if nearest_point['distance'] <= 0.1:    # TODO -> Logic needs to be reviewed sue to unsuccessful sending of data
+        if nearest_point['distance'] <= 0.25:   
             logging.info('We got a hit boys')
             return nearest_point
         else:
@@ -33,7 +34,7 @@ def haversine_distance(latitude, longitude, point):
     r = 6371
     dLat = deg_to_rad(lat2 - latitude)
     dLon = deg_to_rad(lon2 - longitude)
-    a = math.sin(dLat / 2) * math.sin(dLat / 2) * math.cos(deg_to_rad(latitude)) * math.cos(deg_to_rad(lat2)) * math.sin(dLon / 2) * math.sin(dLon / 2)
+    a = math.sin(dLat / 2) * math.sin(dLat / 2) * math.cos(deg_to_rad(latitude)) + math.cos(deg_to_rad(lat2)) * math.sin(dLon / 2) * math.sin(dLon / 2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     distance = r * c
 

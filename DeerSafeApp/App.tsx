@@ -14,6 +14,7 @@ import mapStyles from './components/styles/MapComponent.styles';
 import { getElapsedTime } from './src/utils/timeElapsed';
 import UserLocation from './components/UserLocation';
 import { LocationObject } from 'expo-location';
+import setProxInterval from './components/ProximityCheck'
 
 const App: React.FC = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -81,11 +82,12 @@ const App: React.FC = () => {
     return null; // Optionally, render a splash screen component here
   }
 
+  setProxInterval();
+
   return (
     <View style={homeStyles.container}>
       {/* Pass setLocation to UserLocation component */}
       <UserLocation setLocation={setUserLocation} />
-
       {/* Navbar */}
       <Navbar />
 
@@ -108,7 +110,9 @@ const App: React.FC = () => {
       <View style={mapStyles.container}>
         {userLocation && <MapComponent location={userLocation} alerts={locations} />}
       </View>
+
     </View>
+    
   );
 };
 

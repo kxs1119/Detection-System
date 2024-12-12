@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import { LocationObject } from 'expo-location';
-
 interface UserLocationProps {
   setLocation: (location: LocationObject) => void;  // Prop to pass the location data back to the parent
 }
@@ -30,6 +29,9 @@ const UserLocation: React.FC<UserLocationProps> = ({ setLocation }) => {
           setLocation(loc);  // Pass the new location back to the parent
         }
       );
+
+
+
 
       return () => {
         locationSubscription.remove();

@@ -3,22 +3,9 @@
         "id": 63,
         "device": "ESP32-CAM-01",
         "timestamp": "2024-10-31T15:45:00Z",
-        "latitude": 41.301948,
+        "latitude": 41.3019,
         "longitude": -79.890538,
         "location": "Route 27",
-        "animal_type": "Deer",
-        "alert_count": 1,
-        "description": "Single deer detected crossing the road"
-    },
-    {
-        "id": 63,
-        "device": "ESP32-CAM-01",
-        "timestamp": "2024-10-31T15:45:00Z",
-        "latitude": 92.301948,
-        "longitude": -79.890538,
-        "location": "Route 27",
-        "animal_type": "Deer",
-        "alert_count": 1,
         "description": "Single deer detected crossing the road"
     }
 ]
