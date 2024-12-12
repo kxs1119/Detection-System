@@ -1,6 +1,7 @@
 import json
 import logging
 from utils.file_utils import ensure_file_exists, read_json_file, write_json_file
+from services.location_services import process_location
 
 # File to store mock data
 mock_data_file = '../DeerSafeApp/src/mocks/mock_data.json'
@@ -32,19 +33,22 @@ def process_alert(data):
         "latitude": latitude,
         "longitude": longitude,
         "location": location_name,
-        "animal_type": data.get('animal_type', "Unknown"),
-        "alert_count": data.get('alert_count', 1),
         "description": data.get('description', "No description provided"),
     }
+    
+    potential_alert = process_location(alert_data)
+    if potential_alert == False:
+        logging.info('Alert is too far away')
+        return False
+    else:
+            # Append alert data to file
+        try:
+            alerts = read_json_file(mock_data_file)
+            alerts.append(alert_data)
+            write_json_file(mock_data_file, alerts)
+            logging.info("Alert appended to mock data file")
+        except Exception as e:
+            logging.error(f"Failed to process alert: {e}")
+            raise e
 
-    # Append alert data to file
-    try:
-        alerts = read_json_file(mock_data_file)
-        alerts.append(alert_data)
-        write_json_file(mock_data_file, alerts)
-        logging.info("Alert appended to mock data file")
-    except Exception as e:
-        logging.error(f"Failed to process alert: {e}")
-        raise e
-
-    return alerts
+        return alerts

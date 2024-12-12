@@ -1,5 +1,6 @@
 // AlertLocation.ts
 export interface AlertLocation {
+  imageUrl: any;
   id: number;
   device: string;
   time_stamp: string;  // From the backend timestamp

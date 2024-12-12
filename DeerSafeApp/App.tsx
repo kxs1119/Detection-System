@@ -13,6 +13,7 @@ import homeStyles from './components/styles/Homescreen.styles';
 import mapStyles from './components/styles/MapComponent.styles';
 import { getElapsedTime } from './src/utils/timeElapsed';
 import UserLocation from './components/UserLocation';
+import { LocationObject } from 'expo-location';
 
 const App: React.FC = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -21,6 +22,7 @@ const App: React.FC = () => {
   const [notificationMessage, setNotificationMessage] = useState<string>('');
   const [showBanner, setShowBanner] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [userLocation, setUserLocation] = useState<LocationObject | null>(null);  // New state for location
 
   const opacityAnim = useNotificationBanner(showBanner);
 
@@ -81,26 +83,30 @@ const App: React.FC = () => {
 
   return (
     <View style={homeStyles.container}>
+      {/* Pass setLocation to UserLocation component */}
+      <UserLocation setLocation={setUserLocation} />
 
-      <UserLocation />
-
+      {/* Navbar */}
       <Navbar />
 
+      {/* Notification Banner */}
       {showBanner && (
         <NotificationBanner opacityAnim={opacityAnim} message={notificationMessage} />
       )}
 
+      {/* Alerts List */}
       <View>
         {error && <Text style={{ color: 'red', padding: 10 }}>{error}</Text>}
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" style={{ marginTop: 20 }} />
         ) : (
-          <AlertList locations={locations} error={error} />
+          <AlertList alerts={locations} error={error} />
         )}
       </View>
 
+      {/* MapComponent - Pass userLocation and alerts */}
       <View style={mapStyles.container}>
-        <MapComponent alerts={locations} />
+        {userLocation && <MapComponent location={userLocation} alerts={locations} />}
       </View>
     </View>
   );

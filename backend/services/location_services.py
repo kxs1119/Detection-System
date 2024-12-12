@@ -11,9 +11,11 @@ def process_location(data):
 
         print(f"Nearest point found!\nLatitude: {nearest_point['latitude']}\nLongitude: {nearest_point['longitude']}\nDistance: {nearest_point['distance']}km\n")
 
-        if nearest_point['distance'] <= 0.1:
+        if nearest_point['distance'] <= 0.1:    # TODO -> Logic needs to be reviewed sue to unsuccessful sending of data
+            logging.info('We got a hit boys')
             return nearest_point
         else:
+            logging.info('We missed a hit boys')
             return False
         
     except Exception as e:
@@ -45,7 +47,7 @@ def find_nearest(latitude, longitude):
 
         for point in data:
             distance = haversine_distance(latitude, longitude, point)
-
+            logging.info(f'Distance Calculator here = {distance}')
             if distance < nearest_point["distance"]:
                 nearest_point["latitude"] = point["latitude"]
                 nearest_point["longitude"] = point["longitude"]

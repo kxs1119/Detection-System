@@ -7,17 +7,10 @@ alert_bp = Blueprint('alerts', __name__)
 @alert_bp.route('/', methods=['POST'])
 def handle_alerts():
     data = request.json
-
-    try:
-        # Process the alert data
-        alert_data = process_alert(data)
-        # if detected, make alert 
-        if alert_data: 
-            json.dumps(alert_data)
-        else:
-            print("Alert not found...")
-            
-            
-        return jsonify({"message": "Detection data received and appended", "alerts": alert_data}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    # Process the alert
+    alert_data = process_alert(data)
+    
+    if alert_data:
+        return jsonify({"message": "Alert processed successfully", "data": alert_data}), 200
+    else:
+        return jsonify({"message": "No alerts to process"}), 200
