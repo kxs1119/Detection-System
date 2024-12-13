@@ -3,13 +3,16 @@ from services.alert_services import process_alert
 
 alert_bp = Blueprint('alerts', __name__)
 
-@alert_bp.route('/alerts', methods=['POST'])
+@alert_bp.route('/', methods=['POST'])  # Correct base route
 def handle_alerts():
-    data = request.json
-
     try:
-        # Process the alert data
+        data = request.json
+        # Process the alert
         alert_data = process_alert(data)
-        return jsonify({"message": "Detection data received and appended", "alerts": alert_data}), 200
+        if alert_data:
+            return jsonify({"message": "Alert processed successfully", "data": alert_data}), 200
+        else:
+            return jsonify({"message": "No alerts to process"}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        print(f"Error: {str(e)}")
+        return jsonify({"error": "An error occurred while processing the alert"}), 500

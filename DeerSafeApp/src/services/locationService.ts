@@ -1,42 +1,53 @@
-// DeerSafeApp/src/services/locationService.ts
 import * as Location from 'expo-location';
 
-const API_URL = 'BACKEND_LOCATION'; // TODO -> Need to replace with backend route when made
+// Define API base URL for the backend
+const API_URL = 'http://127.0.0.1:8080/api';
 
+// Function to get current location using Expo Location
 export const getCurrentLocation = async (): Promise<Location.LocationObject> => {
-    // Request permission to access location
     const { status } = await Location.requestForegroundPermissionsAsync();
-
-    // condition to throw error if not granted
     if (status !== 'granted') {
-        throw new Error('Permission to access location denied by user')
+        throw new Error('Permission to access location denied by user');
     }
-
-    // Receive the location of the User 
     return await Location.getCurrentPositionAsync({});
 };
 
+// Function to send user's location data to the backend
 export const sendLocationToBackend = async (location: Location.LocationObject) => {
     try {
-        const response = await fetch(`${API_URL}/location`, {
+        const response = await fetch(`${API_URL}/proximity`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
-                radius: 20 // raduis in miles around the end user 
-            })
+            }),
         });
 
-        if (!response.ok) {
-            throw new Error('Failed to send location data');
-        }
-
+        if (!response.ok) throw new Error('Failed to send location data');
         return await response.json();
     } catch (error) {
-        console.error('Error sending location:', error);
+        console.log('Error sending location:', error);
+        throw error;
+    }
+};
+
+// Function to retrieve alerts from the backend
+export const getAlertsFromBackend = async (location: Location.LocationObject) => {
+    try {
+        const response = await fetch(`${API_URL}/alerts`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+            }),
+        });
+
+        if (!response.ok) throw new Error('Failed to retrieve alerts');
+        return await response.json();
+    } catch (error) {
+        console.error('Error retrieving alerts:', error);
         throw error;
     }
 };

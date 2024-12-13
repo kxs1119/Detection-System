@@ -1,6 +1,8 @@
 import json
 import logging
 from utils.file_utils import ensure_file_exists, read_json_file, write_json_file
+from services.location_services import process_location
+from flask import flash, Blueprint, request
 
 # File to store mock data
 mock_data_file = '../DeerSafeApp/src/mocks/mock_data.json'
@@ -32,12 +34,9 @@ def process_alert(data):
         "latitude": latitude,
         "longitude": longitude,
         "location": location_name,
-        "animal_type": data.get('animal_type', "Unknown"),
-        "alert_count": data.get('alert_count', 1),
         "description": data.get('description', "No description provided"),
     }
 
-    # Append alert data to file
     try:
         alerts = read_json_file(mock_data_file)
         alerts.append(alert_data)
@@ -48,3 +47,13 @@ def process_alert(data):
         raise e
 
     return alerts
+
+
+alert_bp = Blueprint('alerts', __name__)
+
+@alert_bp.route('/displayAlert', methods=['POST'])
+def displayAlert():
+    location = request.json
+    flash(f"Deer Detected {location['distance']}km away!", 'info')
+    
+    return 200 
